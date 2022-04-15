@@ -36,6 +36,8 @@ void	resched(void)		// assumes interrupts are disabled
 	if (AGING)
 		sched_age(readyqueue, oldpid, currpid);
 
+	preempt = QUANTUM; // reset
+	
 	// Context switch to next ready process
 	ctxsw(&ptold->prstkptr, &ptnew->prstkptr);
 
